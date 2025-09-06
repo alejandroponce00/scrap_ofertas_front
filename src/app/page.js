@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
+import Image from "next/image";
 
 export default function Home() {
   const [busqueda, setBusqueda] = useState("");
@@ -34,10 +35,21 @@ export default function Home() {
         {productos.map((p, i) => (
           <div
             key={i}
-            className="bg-white rounded-2xl shadow-md p-4 hover:shadow-lg transition"
+            className="bg-white rounded-2xl shadow-md p-4 hover:shadow-lg transition flex flex-col items-center"
           >
-            <h2 className="text-lg font-semibold">{p.nombre}</h2>
-            <p className="text-gray-500">{p.precio}</p>
+            {/* Imagen del producto */}
+            {p.imagen && (
+              <Image
+                src={p.imagen}
+                width={300}
+                height={300}
+                alt={p.nombre}
+                className="w-full h-48 object-contain mb-4 rounded-xl"
+              />
+            )}
+
+            <h2 className="text-lg font-semibold text-center">{p.nombre}</h2>
+            <p className="text-gray-500 mt-1">{p.precio}</p>
             <p className="text-sm text-gray-400 mt-1">
               🏬 Origen: <span className="font-medium">{p.origen}</span>
             </p>
@@ -47,3 +59,4 @@ export default function Home() {
     </main>
   );
 }
+
