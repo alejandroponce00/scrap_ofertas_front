@@ -35,7 +35,7 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-gray-50 flex flex-col items-center p-6">
       <h1 className="text-4xl font-bold mb-4 text-center">
-        🛒 ScrapyOfertas - Ofertas de Supermercados
+        🛒 ScrapyOfertas - Ofertas de Productos deportivos
       </h1>
       
 
@@ -64,6 +64,10 @@ export default function Home() {
                 alt={p.nombre}
                 className="w-full h-48 object-contain mb-4 rounded-xl"
               />
+            )}
+            {/* Mostrar la URL de la imagen para depuración */}
+            {p.imagen && (
+              <p className="text-xs break-all text-gray-400 mb-2">{p.imagen}</p>
             )}
 
             <h2 className="text-lg font-semibold text-center">{p.nombre}</h2>
