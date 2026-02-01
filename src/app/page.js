@@ -65,10 +65,7 @@ export default function Home() {
                 className="w-full h-48 object-contain mb-4 rounded-xl"
               />
             )}
-            {/* Mostrar la URL de la imagen para depuración */}
-            {p.imagen && (
-              <p className="text-xs break-all text-gray-400 mb-2">{p.imagen}</p>
-            )}
+         
 
             <h2 className="text-lg font-semibold text-center">{p.nombre}</h2>
             <p className="text-gray-500 mt-1">{p.precio}</p>
