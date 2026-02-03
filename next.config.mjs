@@ -5,7 +5,9 @@ const nextConfig = {
       'vteximg.com',
       'coto.com.ar',
       'solodeportes.com.ar',
-      'www-cdn.solodeportes.com.ar' // <-- agrega este dominio
+      'www-cdn.solodeportes.com.ar',
+      'stockcenter.com.ar',
+      'www.stockcenter.com.ar'
     ],
   },
 };
