@@ -35,7 +35,9 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-gray-50 flex flex-col items-center p-6">
       <h1 className="text-4xl font-bold mb-4 text-center">
-        🛒 ScrapyOfertas - Ofertas de Productos deportivos
+        DeporteScan 👟
+        <br></br>Ofertas de Productos deportivos
+        <br></br>
       </h1>
       
 
@@ -57,18 +59,27 @@ export default function Home() {
             className="bg-white rounded-2xl shadow-md p-4 hover:shadow-lg transition flex flex-col items-center"
           >
             {p.imagen && (
-              <Image
-                src={p.imagen}
-                width={300}
-                height={300}
-                alt={p.nombre}
-                className="w-full h-48 object-contain mb-4 rounded-xl"
-              />
+              <a 
+                href={p.url} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="block w-full"
+              >
+                <Image
+                  src={p.imagen}
+                  width={300}
+                  height={300}
+                  alt={p.nombre}
+                  className="w-full h-48 object-contain mb-4 rounded-xl hover:opacity-90 transition cursor-pointer"
+                />
+              </a>
             )}
          
 
             <h2 className="text-lg font-semibold text-center">{p.nombre}</h2>
-            <p className="text-gray-500 mt-1">{p.precio}</p>
+            <p className="text-gray-500 mt-1">
+              {p.precio ? `$${Number(p.precio).toLocaleString('es-AR')}` : 'Precio no disponible'}
+            </p>
             <p className="text-sm text-gray-400 mt-1">
               🏬 Origen: <span className="font-medium">{p.origen}</span>
             </p>
