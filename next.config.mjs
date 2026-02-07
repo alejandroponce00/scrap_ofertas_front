@@ -7,7 +7,9 @@ const nextConfig = {
       'solodeportes.com.ar',
       'www-cdn.solodeportes.com.ar',
       'stockcenter.com.ar',
-      'www.stockcenter.com.ar'
+      'www.stockcenter.com.ar',
+      'opensports.com.ar',
+      'www.opensports.com.ar',
     ],
   },
 };
