@@ -64,17 +64,20 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-gray-50 flex flex-col items-center p-6">
-      <h1 className="text-4xl font-bold mb-4 text-center">
-        DeporteScan 👟
-        <br></br>Ofertas de Productos deportivos
-        <br></br>
-      </h1>
-      
-      {ultimaActualizacion && (
-        <p className="text-sm text-gray-500 mb-4">
-          🕐 Última actualización: {formatearFecha(ultimaActualizacion.fecha)}
-        </p>
-      )}
+      {/* Header con título y fecha de actualización */}
+      <div className="w-full max-w-4xl flex flex-col items-center mb-6">
+        <h1 className="text-4xl font-bold text-center mb-2">
+          DeporteScan 👟
+          <br></br>Ofertas de Productos deportivos
+        </h1>
+        
+        {/* Fecha de actualización en la esquina superior derecha */}
+        {ultimaActualizacion && (
+          <div className="self-end text-sm text-gray-500">
+            🕐 Última actualización: {formatearFecha(ultimaActualizacion.fecha)}
+          </div>
+        )}
+      </div>
       
 
       <input
