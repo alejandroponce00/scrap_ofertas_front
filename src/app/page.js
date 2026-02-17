@@ -7,6 +7,7 @@ export default function Home() {
   const [productos, setProductos] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [ultimaActualizacion, setUltimaActualizacion] = useState(null);
 
   useEffect(() => {
     const fetchProductos = async () => {
@@ -32,6 +33,35 @@ export default function Home() {
     fetchProductos();
   }, [busqueda]);
 
+  useEffect(() => {
+    // Obtener fecha de última actualización
+    const fetchUltimaActualizacion = async () => {
+      try {
+        const baseUrl = process.env.NEXT_PUBLIC_API_URL;
+        const res = await fetch(`${baseUrl}/ultima-actualizacion`);
+        const data = await res.json();
+        setUltimaActualizacion(data);
+      } catch (err) {
+        console.error("Error obteniendo fecha de actualización:", err);
+      }
+    };
+ 
+    fetchUltimaActualizacion();
+  }, []);
+ 
+  // Formatear fecha para mostrar
+  const formatearFecha = (fecha) => {
+    if (!fecha) return "Desconocida";
+    const date = new Date(fecha);
+    return date.toLocaleString('es-AR', {
+      day: '2-digit',
+      month: '2-digit', 
+      year: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit'
+    });
+  };
+
   return (
     <main className="min-h-screen bg-gray-50 flex flex-col items-center p-6">
       <h1 className="text-4xl font-bold mb-4 text-center">
@@ -39,6 +69,12 @@ export default function Home() {
         <br></br>Ofertas de Productos deportivos
         <br></br>
       </h1>
+      
+      {ultimaActualizacion && (
+        <p className="text-sm text-gray-500 mb-4">
+          🕐 Última actualización: {formatearFecha(ultimaActualizacion.fecha)}
+        </p>
+      )}
       
 
       <input
