@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import FlipWords from "./components/FlipWords";
 
 export default function Home() {
   const [busqueda, setBusqueda] = useState("");
@@ -8,6 +9,9 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [ultimaActualizacion, setUltimaActualizacion] = useState(null);
+  const words = [{text: "StockCenter",color: "text-blue-500"},
+     {text: "SoloDeportes",color: "text-red-500"},
+      {text: "OpenSports",color: "text-yellow-500"}];
 
   useEffect(() => {
     const fetchProductos = async () => {
@@ -85,17 +89,17 @@ export default function Home() {
   };
 
   return (
-    <main className="min-h-screen bg-gray-50 flex flex-col items-center p-6">
+    <main className="min-h-screen bg-gradient-to-br from-orange-100 to-amber-50 flex flex-col items-center p-6">
       {/* Header con título y fecha de actualización */}
       <div className="w-full max-w-4xl flex flex-col items-center mb-6">
-        <h1 className="text-4xl font-bold text-center mb-2">
-          DeporteScan 👟
-          <br></br>Ofertas de Productos deportivos
-        </h1>
+          <h1 className="text-4xl font-bold">
+      Ofertas Deportivas de {" "}
+      <FlipWords words={words} />
+    </h1>
         
         {/* Fecha de actualización en la esquina superior derecha */}
         {ultimaActualizacion && (
-          <div className="self-end text-sm text-gray-500">
+          <div className=" text-sm text-gray-500">
             🕐 Última actualización: {formatearFecha(ultimaActualizacion.fecha)}
           </div>
         )}
@@ -117,7 +121,7 @@ export default function Home() {
         {productos.map((p) => (
           <div
             key={p.id || p.nombre} // si no tienes id, usa el nombre como fallback
-            className="bg-white rounded-2xl shadow-md p-4 hover:shadow-lg transition flex flex-col items-center"
+            className="bg-white rounded-2xl hover:scale-105 shadow-md p-4  transition flex flex-col items-center"
           >
             {p.imagen && (
               <a 
