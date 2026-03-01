@@ -62,6 +62,28 @@ export default function Home() {
     });
   };
 
+  // Formatear precio para mostrar (maneja números y strings)
+  const formatearPrecio = (precio) => {
+    if (!precio && precio !== 0) return 'Precio no disponible';
+    
+    // Si es string, limpiar y extraer el número
+    if (typeof precio === 'string') {
+      // Remover símbolo $ y espacios especiales, luego extraer números
+      const precioLimpio = precio.replace(/[^\d.,]/g, '');
+      const numero = parseFloat(precioLimpio.replace(/\./g, '').replace(',', '.'));
+      
+      if (isNaN(numero)) return 'Precio no disponible';
+      return `$${numero.toLocaleString('es-AR')}`;
+    }
+    
+    // Si es número, formatear directamente
+    if (typeof precio === 'number') {
+      return `$${precio.toLocaleString('es-AR')}`;
+    }
+    
+    return 'Precio no disponible';
+  };
+
   return (
     <main className="min-h-screen bg-gray-50 flex flex-col items-center p-6">
       {/* Header con título y fecha de actualización */}
@@ -117,7 +139,7 @@ export default function Home() {
 
             <h2 className="text-lg font-semibold text-center">{p.nombre}</h2>
             <p className="text-gray-500 mt-1">
-              {p.precio ? `$${Number(p.precio).toLocaleString('es-AR')}` : 'Precio no disponible'}
+              {formatearPrecio(p.precio)}
             </p>
             <p className="text-sm text-gray-400 mt-1">
               🏬 Origen: <span className="font-medium">{p.origen}</span>

@@ -43,12 +43,6 @@ front_scrapiofertas/
 └── package.json            # Dependencias
 ```
 
-## 🔧 Configuración
-
-### Variables de Entorno
-```env
-NEXT_PUBLIC_API_URL=http://localhost:4000
-```
 
 ### Dominios de Imágenes Permitidos
 ```javascript
