@@ -35,7 +35,7 @@ const nextConfig = {
         hostname: 'www.opensports.com.ar',
       },
     ],
-    unoptimized: false,
+    unoptimized: true,
   },
 };
 
